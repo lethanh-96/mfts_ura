@@ -1,0 +1,7 @@
+epsloader
+matplotlib
+scipy
+pandas
+joblib
+numpy
+tqdm

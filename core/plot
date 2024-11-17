@@ -1,0 +1,26 @@
+#!/home/thanh/Resource/venv/bin/python
+from joblib import Parallel, delayed
+import itertools
+import os
+
+
+cmds = [
+    'python3 -W ignore main.py --scenario=plot_line --metric=avg_p_tx',
+    'python3 -W ignore main.py --scenario=plot_line --metric=drop_rate',
+    'python3 -W ignore main.py --scenario=plot_line --metric=reward',
+    'python3 -W ignore main.py --scenario=plot_line --metric=arm_4',
+    'python3 -W ignore main.py --scenario=plot_energy',
+]
+# expected_n_events = [5, 6, 7, 8, 9, 10]
+expected_n_events = [7]
+
+new_cmds = []
+for expected_n_event, cmd in itertools.product(expected_n_events, cmds):
+    new_cmds.append(cmd + f' --expected_n_event={expected_n_event}')
+cmds = new_cmds
+
+def f(cmd):
+    print(f'[+] executing: {cmd}')
+    os.system(cmd)
+
+Parallel(n_jobs=os.cpu_count())(delayed(f)(cmd) for cmd in cmds)
