@@ -18,7 +18,7 @@ class Solver(BaseSolver):
         self.target_net = DQN(args)
         target_net.load_state_dict(policy_net.state_dict())
         # initialize optimizer
-        optimizer = optim.AdamW(policy_net.parameters(), lr=LR, amsgrad=True)
+        optimizer = optim.AdamW(policy_net.parameters(), lr=args.learning_rate, amsgrad=True)
         memory = ReplayMemory(10000)
 
     def choose_arm(self):
