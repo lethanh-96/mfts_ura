@@ -10,9 +10,8 @@ class DQN(nn.Module):
         self.layer2 = nn.Linear(args.n_hidden, args.n_hidden)
         self.layer3 = nn.Linear(args.n_hidden, args.n_action)
 
-    # Called with either one element to determine next action, or a batch
-    # during optimization. Returns tensor([[left0exp,right0exp]...]).
-    def forward(self, x):
+    def forward(self, x, m):
+        x = torch.cat((x[:, None], m[None, :].repeat(x.shape[0], 1)), dim=1)
         x = F.relu(self.layer1(x))
         x = F.relu(self.layer2(x))
         return self.layer3(x)

@@ -300,6 +300,8 @@ class BaseSolver:
             info['min_var'] = 0
         elif args.solver == 'weighted_random':
             info['min_var'] = 1 / Q
+        elif args.solver == 'mfdqn':
+            pass
         else:
             raise NotImplementedError
 
