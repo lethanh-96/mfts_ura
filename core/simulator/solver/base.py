@@ -38,6 +38,8 @@ class BaseSolver:
         self.n_violated          = 0
         self.idx_violated        = None
         self.global_step         = 0
+        self.active_indices      = self.traffic_model.get_active_device()
+        self.sample_g_db()
 
     def compute_population_profile(self):
         # extract args
@@ -301,7 +303,7 @@ class BaseSolver:
         elif args.solver == 'weighted_random':
             info['min_var'] = 1 / Q
         elif args.solver == 'mfdqn':
-            pass
+            info['loss'] = self.loss
         else:
             raise NotImplementedError
 

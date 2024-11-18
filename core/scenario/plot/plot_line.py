@@ -16,11 +16,14 @@ def plot_line(args):
     # initialize figure size
     fig = plt.figure(figsize=(4, 3))
     # list of solvers to compare
-    styles  = ['g:x',  'r-D', 'y-s', 'k:*']
-    solvers = ['hedge', 'ts', 'tts', 'greedy']
-    labels  = ['Hedge', 'TS', 'MFTTS', 'Centralized']
+    styles  = ['g:x',  'r-D', 'y-s', 'k:*', 'b:+']
+    solvers = ['hedge', 'ts', 'tts', 'greedy', 'mfdqn']
+    labels  = ['Hedge', 'TS', 'MFTTS', 'Centralized', 'MFDQN']
+#     styles  = ['b:+']
+#     solvers = ['mfdqn']
+#     labels  = ['MFDQN']
     xticks  = [0, 2000, 4000, 6000, 8000]
-    seeds   = range(10)
+    seeds   = range(1)
     # load csv for each solver
     for i, (solver, label) in enumerate(zip(solvers, labels)):
         Y = []

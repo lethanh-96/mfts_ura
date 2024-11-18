@@ -42,6 +42,8 @@ class Monitor:
                 _kwargs[key] = kwargs[key]
             elif 'avg_p_tx' in key:
                 _kwargs[key] = f'{kwargs[key]:0.3f}'
+            elif 'loss' in key:
+                _kwargs[key] = f'{kwargs[key]:0.3f}'
         self.bar.set_postfix(**_kwargs)
 
     def display(self):

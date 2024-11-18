@@ -44,7 +44,7 @@ def get_args():
     parser.add_argument('--n_approximator_sample', type=int, default=500)
     # mfdqn solver
     parser.add_argument('--n_hidden', type=int, default=128)
-    parser.add_argument('--batch_size', type=int, default=128)
+    parser.add_argument('--batch_size', type=int, default=1)
     parser.add_argument('--gamma', type=float, default=0.99)
     parser.add_argument('--eps_start', type=float, default=0.9)
     parser.add_argument('--eps_end', type=float, default=0.05)
